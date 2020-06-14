@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Overview from './pages/overview/overview.component';
+import Timesheet from './pages/timesheet/timesheet.component';
+import Activity from './pages/activity/activity.component';
+import Host from './pages/host/host.component';
+
+import Header from './components/header/header.component';
+import { switchTab } from './redux/header/header.actions';
+
+class App extends React.Component {
+
+  componentDidMount() {
+    const { switchTab } = this.props;
+    
+  }
+ 
+  render() {
+    return (  
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Overview} />
+          <Route exact path='/timesheet' component={Timesheet} />
+          <Route exact path='/activity' component={Activity} />
+          <Route exact path='/host' component={Host} />
+        </Switch>
+      </div>
+    );
+  }
 }
+const mapDispatchToProps = dispatch => ({
+  switchTab: headerTabs => dispatch(switchTab(headerTabs))
+});
 
-export default App;
+export default connect(null, )(App);
