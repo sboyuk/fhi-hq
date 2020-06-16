@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { switchTab } from '../../redux/header/header.actions';
 
+import { Container } from './overview.styles';
+
 class Overview extends React.Component {
 
     componentDidMount() {
@@ -18,7 +20,7 @@ class Overview extends React.Component {
 
     render() {
         return(
-            <div>Overview Page</div>
+            <Container>Overview Page</Container>
         )
     }
 }
