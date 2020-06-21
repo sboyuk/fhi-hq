@@ -25,7 +25,8 @@ class Timesheet extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    switchTab: headerTabs => dispatch(switchTab({headerTabs}))
-})
+    switchTab: headerTabs => dispatch(switchTab({headerTabs})),
+});
+
 
 export default connect(null, mapDispatchToProps)(Timesheet);

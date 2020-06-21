@@ -6,5 +6,6 @@ export const RecBtn = styled.button`
   height: 2rem;
   background: none;
   margin: 20px 0 0 0;
+  width: 100%;
   /* color: white; */
 `

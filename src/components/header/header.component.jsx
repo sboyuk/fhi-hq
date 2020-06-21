@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import createStructuredSelector from 'reselect';
+// import createStructuredSelector from 'reselect';
 
 import { NavOpt, HeaderContainer } from './header.styles';
 

@@ -20,7 +20,7 @@ class SignInPage extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    const { email, password } = this.state;
+    // const { email, password } = this.state;
   }
 
   handleChange = event => {

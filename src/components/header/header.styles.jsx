@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export const NavOpt = styled(Link)`
     display: inline-block;
     height: 40px;
-    box-sizing: border-box;
     width: 25%;
     line-height: 40px;
     font-size: .75rem;

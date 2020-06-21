@@ -30,5 +30,6 @@ export const RectangularButton = styled.button`
     height: 2rem;
     background: none;
     margin: 25px 0;
+    
     /* color: white; */
 `
