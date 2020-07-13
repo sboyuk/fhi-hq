@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
     /* border: 1px solid black; */
-    margin: 10px 5px;
-    // border-radius: 3px;
+    margin: 10px 10px;
+    /* border-radius: 3px; */
+    /* padding: 15px; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -11,25 +12,24 @@ export const CardContainer = styled.div`
 `
 export const RoundButton = styled.div`
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
     border: 1px solid black;
-    margin: 20px auto;
+    margin: 30px auto  auto;
     background: white;
-    font-size: 11px;
+    font-size: 1rem;
     text-align: center;
-    line-height: 100px;
+    cursor: pointer;
 `
 export const Time = styled.div`
+    margin-top: 50px;
     text-align: center;
-    font-size: 45px;
+    font-size: 3.4rem;
 `
-export const RectangularButton = styled.button`
-    border: 1px solid black;
-    border-radius: 0px;
-    height: 2rem;
-    background: none;
-    margin: 25px 0;
-    
-    /* color: white; */
+
+export const CenterMessage = styled.div`
+    text-align: center;
+    margin: 10px 0 40px 0;
+    opacity: ${({opacity}) => opacity};
 `

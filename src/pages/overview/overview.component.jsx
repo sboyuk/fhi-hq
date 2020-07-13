@@ -1,25 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { auth } from '../../firebase/firebase.utils';
+import { connect } from 'react-redux';
 
-import { switchTab } from '../../redux/header/header.actions';
-import { setCurrentUser } from '../../redux/user/user.actions';
-
-import { CardContainer } from '../../components/card/card.styles';
+import CardContainer from '../../styled-components/card-container.component';
 import RectangularButton from '../../components/rectangular-button/rectangular-button.component';
-import SignUp from '../../components/sign-up/sign-up.component';
+import UserInfo from '../../components/user-info/user-info.component';
+import { NavLine } from '../../styled-components/nav-line.component';
 
 
 class Overview extends React.Component {
     componentDidMount() {
-        const { switchTab } = this.props; 
-    
-        switchTab({
-            overview: true,
-            timesheet: false,
-            activity: false,
-            host: false,
-        });
 
     }
 
@@ -27,23 +17,14 @@ class Overview extends React.Component {
         return(
             <div>
                 <CardContainer>
+                    <UserInfo />
                     <RectangularButton onClick={() => auth.signOut()}>SIGN OUT</RectangularButton>
                 </CardContainer>
-                <SignUp />
-
+                <NavLine page='overview' />
             </div>
 
         )
     }
 }
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
-  })
-
-const mapDispatchToProps = dispatch => ({
-    switchTab: headerTabs => dispatch(switchTab({headerTabs})),
-    setCurrentUser: currentUser => dispatch(setCurrentUser({user: currentUser}))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Overview);
+export default connect()(Overview);

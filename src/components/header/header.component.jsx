@@ -4,17 +4,13 @@ import {connect} from 'react-redux';
 
 import { NavOpt, HeaderContainer } from './header.styles';
 
-const Header = ({header}) => (
+const Header = () => (
     <HeaderContainer>
-        <NavOpt to='/' active={header.overview}>Overview</NavOpt>
-        <NavOpt to='/timesheet' active={header.timesheet}>Timesheet</NavOpt>
-        <NavOpt to='/activity' active={header.activity}>Activity</NavOpt>
-        <NavOpt to='/host' active={header.host}>Host</NavOpt>
+        <NavOpt to='/'>Overview</NavOpt>
+        <NavOpt to='/timesheet'>Timesheet</NavOpt>
+        <NavOpt to='/activity'>Activity</NavOpt>
+        <NavOpt to='/host'>Host</NavOpt>
     </HeaderContainer>
 )
 
-const mapStateToProps = state => ({
-    header: state.header.headerTabs
-});
-
-export default connect(mapStateToProps)(Header);
+export default connect()(Header);

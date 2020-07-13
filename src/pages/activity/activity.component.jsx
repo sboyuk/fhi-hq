@@ -1,30 +1,28 @@
 import React from 'react';
+
 import { connect } from 'react-redux';
 
-import { switchTab } from '../../redux/header/header.actions';
+import { NavLine } from '../../styled-components/nav-line.component';
 
 class Activity extends React.Component {
 
     componentDidMount() {
-        const { switchTab } = this.props;
 
-        switchTab({
-            overview: false,
-            timesheet: false,
-            activity: true,
-            host: false
-        });
     }
 
     render() {
         return (
-            <div>Activity page</div>
+            <div>
+                <NavLine page='activity' />
+            </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    switchTab: headerTabs => dispatch(switchTab({headerTabs}))
+const mapStateToProps = state => ({
 })
 
-export default connect(null, mapDispatchToProps)(Activity);
+const mapDispatchToProps = dispatch => ({
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Activity);

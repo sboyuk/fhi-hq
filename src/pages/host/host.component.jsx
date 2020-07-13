@@ -1,30 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { switchTab } from '../../redux/header/header.actions';
+import LoadQueue from '../../components/load-queue/load-queue.component';
+import CurrentLoad from '../../components/current-load/current-load.component';
+
+import { NavLine } from '../../styled-components/nav-line.component';
+import { Tab, TabBar } from '../../styled-components/tabs.styles';
+import TabbedPage from '../../styled-components/tabbed-page.styles';
 
 class Host extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            tab: <LoadQueue />,
+        }
+    }
 
     componentDidMount() {
-        const { switchTab } = this.props;
 
-        switchTab({
-            overview: false,
-            timesheet: false,
-            activity: false,
-            host: true,
-        });
     }
 
     render() {
         return(
-            <div>Host Page</div>
+            <TabbedPage>
+                <TabBar>
+                    <Tab onClick={(event) => this.setState({ tab: <LoadQueue /> })}>Load Queues</Tab>
+                    <Tab onClick={(event) => this.setState({ tab: <CurrentLoad /> })}>Current Load</Tab>
+                </TabBar>
+                {
+                    this.state.tab
+                }
+                {/* <RoundButton>ADD</RoundButton> */}
+                <NavLine page='host' />
+            </TabbedPage>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    switchTab: headerTabs => dispatch(switchTab({headerTabs}))
-})
-
-export default connect(null, mapDispatchToProps)(Host);
+export default connect()(Host);

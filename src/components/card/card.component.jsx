@@ -1,12 +1,21 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
-import { CardContainer, RoundButton, Time } from './card.styles';
+import { saveTimePunch } from '../../firebase/timesheet.utils';
 
-class TimePunchCard extends React.Component {
-    state = {
-        hours: 0,
-        minutes: 0,
+import { RoundButton, Time, CenterMessage } from './card.styles';
+import CardContainer from '../../styled-components/card-container.component';
+
+class TimePunchButton extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            hours: 0,
+            minutes: 0,
+            messageOpacity: 0,
+            message: 'message'
+        }
     }
 
     getTime() {
@@ -30,18 +39,48 @@ class TimePunchCard extends React.Component {
 
     componentWillUnmount() {
         clearInterval(this.timer)
+    }       
+
+    generateTimePunch = event => {
+        event.preventDefault();
+
+        if(Date.now() - this.props.currentUser.lastPunchTime < 60000) {
+            this.showMessage('Please wait');
+        } else {
+            const { currentUser } = this.props;
+
+            const { hours, minutes } = this.state;
+    
+            saveTimePunch(currentUser, hours, minutes);
+            this.showMessage('Timestamp saved')
+        }
+    }
+
+    showMessage(message) {
+        this.setState({ messageOpacity: 1, message: message });
+        setTimeout(() => {
+            this.setState({ messageOpacity: 0});
+        }, 2000);
     }
 
     render() {
+        const {currentUser} = this.props;
         return (
             <CardContainer>
                 <Time>
                     {`${this.state.hours}:${this.state.minutes}`}
                 </Time>
-                <RoundButton>CLOCK IN</RoundButton>
+                <RoundButton onClick={this.generateTimePunch} >
+                    {currentUser.lastPunchType === 'In' ? 'CLOCK OUT' : 'CLOCK IN'}
+                </RoundButton>
+                <CenterMessage opacity={this.state.messageOpacity}>{this.state.message}</CenterMessage>
             </CardContainer>
         );
     }
 }
 
-export default TimePunchCard;
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(TimePunchButton);

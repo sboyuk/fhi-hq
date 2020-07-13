@@ -1,12 +1,8 @@
 import React from 'react';
 
 import FormInput from '../form-input/form-input.component';
-import RectangularButton from '../rectangular-button/rectangular-button.component';
-import { CardContainer } from '../card/card.styles';
-
+import RectangularButton from '../rectangular-button/rectangular-button.component'
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
-
-
 
 class SignUp extends React.Component {
   constructor () {
@@ -32,14 +28,8 @@ class SignUp extends React.Component {
 
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      console.log(user, displayName)
       await createUserProfileDocument(user, { displayName });
-
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-      })
 
     } catch (error) {
       console.error(error)
@@ -48,6 +38,7 @@ class SignUp extends React.Component {
 
   handleChange = event => {
     const { name, value } = event.target;
+    console.log(name, value);
 
     this.setState({ [name]: value });
   }
@@ -57,9 +48,8 @@ class SignUp extends React.Component {
     const { displayName, email, password, confirmPassword } = this.state
 
     return(
-      <CardContainer>
-        <h2>create new account</h2>
-        <span>use an email and password</span>
+      <div>
+        <h2>CREATE A NEW ACCOUNT</h2>
         <form onSubmit={this.handleSubmit}>
           <FormInput
             type='text'
@@ -95,7 +85,7 @@ class SignUp extends React.Component {
           />
           <RectangularButton type='submit'>SIGN UP</RectangularButton>
         </form>
-      </CardContainer>
+      </div>
     )
   }
 }

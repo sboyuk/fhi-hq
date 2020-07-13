@@ -1,0 +1,9 @@
+whse_num,order_num,carrier,dock_location,sched_date,sched_time,item_count,vendor_num,vendor_name,transportation_code,cases,pallets,weight,department
+106,2341234,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery
+106,23412356,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery
+106,2341236,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery
+106,2341237,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery
+106,2341238,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery
+106,2341239,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery
+106,2341233,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery
+106,2341232,3,4,07/07/2020,07:00 AM,7,8,9,10,11,12,13,Grocery

@@ -1,32 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { switchTab } from '../../redux/header/header.actions';
-import TimePunchCard from '../../components/card/card.component';
+import TimePunchButton from '../../components/card/card.component';
+import TimeCard from '../../components/time-card/time-card.component';
+
+
+import { NavLine } from '../../styled-components/nav-line.component';
 
 class Timesheet extends React.Component {
 
     componentDidMount() {
-        const { switchTab } = this.props; 
 
-        switchTab({
-            overview: false,
-            timesheet: true,
-            activity: false,
-            host: false
-        });
     }
 
     render() {
         return (
-            <TimePunchCard /> 
+            <div>
+                <TimePunchButton /> 
+                <TimeCard/>
+                <NavLine page='timesheet'/>
+            </div>
         )
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    switchTab: headerTabs => dispatch(switchTab({headerTabs})),
-});
-
-
-export default connect(null, mapDispatchToProps)(Timesheet);
+export default connect()(Timesheet);

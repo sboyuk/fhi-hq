@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const RecBtn = styled.button`
+const RectangularButton = styled.button`
   border: 1px solid black;
   border-radius: 0px;
-  height: 2rem;
+  height: 2.3rem;
   background: none;
-  margin: 20px 0 0 0;
+  margin: 15px 0;
   width: 100%;
-  color: black;
-  text-decoration: none;
 `
+
+export default RectangularButton;

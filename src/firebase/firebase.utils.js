@@ -19,9 +19,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
     const snapShot = await userRef.get();
 
-    console.log(snapShot);
-
-    if(!snapShot.exits) {
+    if(snapShot.exists === false) {
         const { displayName , email } = userAuth;
         const createdAt = new Date();
 
@@ -38,8 +36,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
 
     return userRef;
-}
-//asdfasdf
+}                   
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
